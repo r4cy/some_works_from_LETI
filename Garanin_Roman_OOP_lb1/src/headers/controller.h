@@ -1,0 +1,21 @@
+#ifndef CONTROLLER_H_
+#define CONTROLLER_H_
+
+#include "states_walk.h"
+#include "player.h"
+#include "playing_field.h"
+
+class Controller{
+private:
+    Player& person;
+    Field& field;
+public:
+    Controller(Player& person, Field& field);
+    void Walking(Joystick value);
+
+    void change_health(int valueC_Health);
+    void change_points(int valueC_Points);
+    void change_level(int ValueC_Level);
+};
+
+#endif
