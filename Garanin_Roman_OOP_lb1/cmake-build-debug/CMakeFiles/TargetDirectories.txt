@@ -1,0 +1,3 @@
+D:/LETI_works/OOP_works_c++/Garanin_Roman_OOP_lb1/cmake-build-debug/CMakeFiles/Garanin_Roman_OOP_lb1.dir
+D:/LETI_works/OOP_works_c++/Garanin_Roman_OOP_lb1/cmake-build-debug/CMakeFiles/edit_cache.dir
+D:/LETI_works/OOP_works_c++/Garanin_Roman_OOP_lb1/cmake-build-debug/CMakeFiles/rebuild_cache.dir
