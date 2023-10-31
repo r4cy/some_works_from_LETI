@@ -1,0 +1,21 @@
+# ninja log v5
+522	702	7204653420944495	D:/LETI_works/OOP_works_c++/Garanin_Roman_OOP_lb1/main.exe	93f935b8a8a06291
+12	522	7204653419183287	CMakeFiles/Garanin_Roman_OOP_lb3.dir/player.cc.obj	41a9e045a69d7a5d
+54	1001	7204652916358073	CMakeFiles/Garanin_Roman_OOP_lb3.dir/mine.cc.obj	84f93e6471dc9ebf
+4	442	7204652994207392	CMakeFiles/Garanin_Roman_OOP_lb3.dir/controller.cc.obj	553a0394b1d20d41
+9	700	7204648589676265	CMakeFiles/Garanin_Roman_OOP_lb3.dir/cell.cc.obj	32d64a8764725e24
+65	1001	7204652916378047	CMakeFiles/Garanin_Roman_OOP_lb3.dir/first_aid_kit.cc.obj	c99e20efed75109c
+16	815	7204648590811084	CMakeFiles/Garanin_Roman_OOP_lb3.dir/playing_field.cc.obj	e2383c89993f6541
+16	101	7204652990794301	CMakeFiles/Garanin_Roman_OOP_lb3.dir/builder_field.cc.obj	61907dfde39f8439
+38	1023	7204652916667175	CMakeFiles/Garanin_Roman_OOP_lb3.dir/teleport.cc.obj	ab2c8b9aec3ded
+32	1041	7204652916870570	CMakeFiles/Garanin_Roman_OOP_lb3.dir/main.cpp.obj	7c94697c2b0b97e1
+42	262	7204665905692890	CMakeFiles/Garanin_Roman_OOP_lb3.dir/mine.cc.obj	e283ed816beef8c8
+262	403	7204665907051888	CMakeFiles/Garanin_Roman_OOP_lb3.dir/first_aid_kit.cc.obj	e55bf39ab8a16be0
+403	1140	7204665912095842	CMakeFiles/Garanin_Roman_OOP_lb3.dir/teleport.cc.obj	6db008fe14cbdc84
+16	1163	7204665914360712	CMakeFiles/Garanin_Roman_OOP_lb3.dir/controller.cc.obj	674f07f3d5c771b6
+10	1176	7204665914481821	CMakeFiles/Garanin_Roman_OOP_lb3.dir/main.cpp.obj	73a5e6d6918df7ab
+22	1176	7204665914511841	CMakeFiles/Garanin_Roman_OOP_lb3.dir/player.cc.obj	9c12abdd730cc326
+29	1178	7204665914915241	CMakeFiles/Garanin_Roman_OOP_lb3.dir/playing_field.cc.obj	56ab2b16eb8e96b5
+34	1224	7204665915380243	CMakeFiles/Garanin_Roman_OOP_lb3.dir/cell.cc.obj	8bff629bf4940af4
+1140	1244	7204665915584937	CMakeFiles/Garanin_Roman_OOP_lb3.dir/builder_field.cc.obj	5c122da3fc4db28c
+1244	1416	7204665917270977	D:/LETI_works/OOP_works_c++/Works_from_LETI/Garanin_Roman_OOP_lb1/main.exe	de29e5441924ba4c
