@@ -14,7 +14,11 @@ int main() {
     control.Walking(Joystick::kDOWN);
     control.Walking(Joystick::kDOWN);
     control.Walking(Joystick::kDOWN);
+    control.Walking(Joystick::kDOWN);
+    control.Walking(Joystick::kDOWN);
+    control.Walking(Joystick::kDOWN);
 
     player.PRINT_VALUES();
+    control.Walking(Joystick::kDOWN);
     return 0;
 }
