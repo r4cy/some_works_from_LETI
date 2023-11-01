@@ -1,5 +1,5 @@
-#ifndef OOP_HEADERS_FIELD_CREATOR_H_
-#define OOP_HEADERS_FIELD_CREATOR_H_
+#ifndef BUILDER_FIELD_H_
+#define BUILDER_FIELD_H_
 
 #include "playing_field.h"
 #include "first_aid_kit.h"
@@ -8,13 +8,14 @@
 
 class FieldCreator {
 private:
-    First_aid_kit event_F;
     Mine event_M;
     Teleport event_T;
+    First_aid_kit event_F;
+
 
 public:
-    Field level_one();
-    Field level_two();
+    Field Create_of_lvl1();
+    Field Create_of_lvl2();
 };
 
 #endif

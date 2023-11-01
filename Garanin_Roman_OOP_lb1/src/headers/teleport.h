@@ -1,5 +1,5 @@
-#ifndef OOP_HEADERS_EVENT_MOVE_H_
-#define OOP_HEADERS_EVENT_MOVE_H_
+#ifndef TELEPORT_H_
+#define TELEPORT_H_
 
 #include "event.h"
 

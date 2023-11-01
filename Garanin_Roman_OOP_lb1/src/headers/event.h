@@ -1,5 +1,5 @@
-#ifndef OOP_HEADERS_EVENT_H_
-#define OOP_HEADERS_EVENT_H_
+#ifndef EVENT_H_
+#define EVENT_H_
 
 class Controller;
 

@@ -1,5 +1,5 @@
-#ifndef OOP_HEADERS_EVENT_SCORE_H_
-#define OOP_HEADERS_EVENT_SCORE_H_
+#ifndef MINE_H_
+#define MINE_H_
 
 #include "event.h"
 

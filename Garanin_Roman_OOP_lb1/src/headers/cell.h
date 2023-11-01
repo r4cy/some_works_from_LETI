@@ -1,27 +1,31 @@
-#ifndef OOP_HEADERS_CELL_H_
-#define OOP_HEADERS_CELL_H_
+#ifndef CELL_H_
+#define CELL_H_
 
 #include "event.h"
 
 class Cell {
 private:
-    bool passability_;
-    Event* event_;
+    bool state_of_cell;
+    Event* event;
+
 
 public:
-    bool get_passability() const;
-    bool get_event() const;
-    void set_passability(bool passability); 
-    void set_event(Event* event);
-
-    void execute_event(Controller& control);
-
-    Cell& operator = (const Cell& other); 
-    Cell& operator = (Cell&& other) noexcept; 
+    Cell(bool Value_state_of_cell = true, Event* Value_event = nullptr);
 
     Cell(const Cell& other);
-    Cell(Cell&& other) noexcept; 
-    Cell(bool passability = true, Event* event = nullptr);
+    Cell(Cell&& other) noexcept;
+    Cell& operator = (const Cell& other);
+    Cell& operator = (Cell&& other) noexcept;
+
+    void Set_Event(Event* Value_event);
+    bool Get_Event() const;
+    void Set_State_of_cell(bool Value_state_of_cell);
+    bool Get_State_of_cell() const;
+
+
+    void Launch(Controller& control);
+
+    void DELETE_OF_CELL();
     ~Cell();
 
 

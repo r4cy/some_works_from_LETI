@@ -1,42 +1,46 @@
-#ifndef OOP_HEADERS_FIELD_H_
-#define OOP_HEADERS_FIELD_H_
+#ifndef PLAYING_FIELD_H_
+#define PLAYING_FIELD_H_
 
 #include "cell.h"
 #include "player.h"
 
 #define MIN_WIDTH 5
-#define MIN_HEIGHT 5
+#define MIN_LENGTH 5
 
 class Field {
+private:
+    Cell** cell;
+    int width, length;
+    int entrance_x, entrance_y;
+    int exit_x, exit_y;
+
+
 public:
-    bool check(int x, int y) const;
-
-    int get_width() const;
-    int get_height() const;
-    Cell& get_cell(int x, int y) const;
-    int get_entrance_x() const;
-    int get_entrance_y() const;
-    int get_exit_x() const;
-    int get_exit_y() const;
-
-    void set_entrance(int x, int y);
-    void set_exit(int x, int y);
-
-    void print_field(Player& player) const;
-
-    Field& operator = (const Field& other);
-    Field& operator = (Field&& other) noexcept;
+    Field(int width = MIN_WIDTH, int height = MIN_LENGTH);
 
     Field(const Field& other);
     Field(Field&& other) noexcept;
-    Field(int width = MIN_WIDTH, int height = MIN_HEIGHT);
+    Field& operator = (const Field& other);
+    Field& operator = (Field&& other) noexcept;
+
+    bool check(int x, int y) const;
+
+    int Get_Width() const;
+    int Get_Length() const;
+
+    Cell& Get_Cell(int x, int y) const;
+
+    void Set_Entrance(int x, int y);
+    int Get_Entrance_X() const;
+    int Get_Entrance_Y() const;
+
+    void Set_Exit(int x, int y);
+    int Get_Exit_X() const;
+    int Get_Exit_Y() const;
+
+    void PRINT_FIELD(Player& player) const;
+
     ~Field();
-    
-private:
-    Cell** cells_;
-    int width_, height_;
-    int entrance_x_, entrance_y_;
-    int exit_x_, exit_y_;
 };
 
 #endif

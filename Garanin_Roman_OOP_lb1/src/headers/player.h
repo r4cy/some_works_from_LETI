@@ -3,6 +3,12 @@
 
 #include "states_walk.h"
 
+#define kMAX_health 100
+#define kSTART_points 0
+#define kMAX_level 5
+#define kSTART_x 0
+#define kSTART_y 0
+
 class Player{
 private:
     int health;
@@ -10,11 +16,6 @@ private:
     int level;
     int x;
     int y;
-    const int kMAX_health = 100;
-    const int kSTART_points = 0;
-    const int kMAX_level = 5;
-    const int kSTART_x = 0;
-    const int kSTART_y = 0;
 
 
 public:

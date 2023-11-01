@@ -1,5 +1,5 @@
-#ifndef OOP_HEADERS_EVENT_HEALTH_H_
-#define OOP_HEADERS_EVENT_HEALTH_H_
+#ifndef FIRST_AID_KIT_H_
+#define FIRST_AID_KIT_H_
 
 #include "event.h"
 

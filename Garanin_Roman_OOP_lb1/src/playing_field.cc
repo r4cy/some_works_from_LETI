@@ -2,96 +2,35 @@
 
 #include "headers/playing_field.h"
 
-bool Field::check(int x, int y) const {
-    if (x < 0 || x >= width_ || y < 0 || y >= height_) 
-        return false;
-    return true;
-}
-
-int Field::get_width() const { 
-    return width_; 
-}
-
-int Field::get_height() const { 
-    return height_; 
-}
-
-Cell& Field::get_cell(int x, int y) const {
-    return cells_[x][y];
-}
-
-int Field::get_entrance_x() const { 
-    return entrance_x_; 
-}
-
-int Field::get_entrance_y() const { 
-    return entrance_y_; 
-}
-
-int Field::get_exit_x() const { 
-    return exit_x_; 
-}
-
-int Field::get_exit_y() const { 
-    return exit_y_; 
-}
-
-void Field::set_entrance(int x, int y) {
-    if (check(x, y) && cells_[x][y].get_passability()) {
-        entrance_x_ = x;
-        entrance_y_ = y;
+Field::Field(int Value_Width, int Value_Length) : width(Value_Width), length(Value_Length) {
+    if (width >= MIN_WIDTH && height >= MIN_LENGTH) {
+        cell = new Cell*[width];
+        for (int i = 0; i < width; i++)
+            cell[i] = new Cell[length];
     } else
-        std::cout << "Invalid entrance coordinates!" << std::endl;
-}
-
-void Field::set_exit(int x, int y) {
-    if (check(x, y) && cells_[x][y].get_passability()) {
-        exit_x_ = x;
-        exit_y_ = y;
-    } else
-        std::cout << "Invalid exit coordinates!" << std::endl;
-}
-
-void Field::print_field(Player& player) const {
-     for (int y = 0; y < width_; y++) {
-        for (int x = 0; x < height_; x++) {
-            if (player.Get_X() == x && player.Get_Y() == y)
-                std::cout << "P ";
-            else if (entrance_x_ == x && entrance_y_ == y)
-                std::cout << "S ";
-            else if (exit_x_ == x && exit_y_ == y)
-                std::cout << "F ";
-            else if (cells_[x][y].get_event()) 
-                std::cout << "? ";
-            else if (cells_[x][y].get_passability())
-                std::cout << ". ";
-            else 
-                std::cout << "# ";
-        }
-        std::cout << std::endl;
-    }
+        std::cout << "" << std::endl;
 }
 
 Field& Field::operator = (const Field& other) {
     if (this != &other) {
-        if (cells_ != nullptr) {
-            for (int x = 0; x < width_; x++) 
-                delete[] cells_[x];
-            delete[] cells_;
+        if (cell != nullptr) {
+            for (int x = 0; x < width; x++)
+                delete[] cell[x];
+            delete[] cell;
         }
 
-        width_ = other.width_;
-        height_ = other.height_;
-        entrance_x_ = other.entrance_x_;
-        entrance_y_ = other.entrance_y_;
-        exit_x_ = other.exit_x_;
-        exit_y_ = other.exit_y_;
-        if (width_ >= MIN_WIDTH && height_ >= MIN_HEIGHT) {
-            cells_ = new Cell*[width_];
-            for (int x = 0; x < width_; x++) {
-                cells_[x] = new Cell[height_];
-                for (int y = 0; y < height_; y++) 
-                    cells_[x][y] = other.cells_[x][y];
+        width = other.width;
+        length = other.length;
+        entrance_x = other.entrance_x;
+        entrance_y = other.entrance_y;
+        exit_x = other.exit_x;
+        exit_y = other.exit_y;
+        if (width >= MIN_WIDTH && length >= MIN_LENGTH) {
+            cell = new Cell*[width];
+            for (int x = 0; x < width; x++) {
+                cell[x] = new Cell[length];
+                for (int y = 0; y < width; y++)
+                    cell[x][y] = other.cell[x][y];
             }
         } else
             std::cout << "Invalid field size!" << std::endl;
@@ -101,58 +40,112 @@ Field& Field::operator = (const Field& other) {
 
 Field& Field::operator = (Field&& other) noexcept {
     if (this != &other) {
-        if (cells_ != nullptr) {
-            for (int x = 0; x < width_; x++) 
-                delete[] cells_[x];
-            delete[] cells_;
+        if (cell != nullptr) {
+            for (int x = 0; x < width; x++)
+                delete[] cell[x];
+            delete[] cell;
         }
 
-        std::swap(width_, other.width_);
-        std::swap(height_, other.height_);
-        std::swap(entrance_x_, other.entrance_x_);
-        std::swap(entrance_y_, other.entrance_y_);
-        std::swap(exit_x_, other.exit_x_);
-        std::swap(exit_y_, other.exit_y_);
-        std::swap(cells_, other.cells_);
+        std::swap(width, other.width);
+        std::swap(length, other.length);
+        std::swap(entrance_x, other.entrance_x);
+        std::swap(entrance_y, other.entrance_y);
+        std::swap(exit_x, other.exit_x);
+        std::swap(exit_y, other.exit_y);
+        std::swap(cell, other.cell);
     }
     return *this;
 }
 
-Field::Field(const Field& other) : width_(other.width_), height_(other.height_), entrance_x_(other.entrance_x_), entrance_y_(other.entrance_y_), exit_x_(other.exit_x_), exit_y_(other.exit_y_) {
-   if (width_ >= MIN_WIDTH && height_ >= MIN_HEIGHT) {
-        cells_ = new Cell*[width_];
-        for (int x = 0; x < width_; x++) {
-            cells_[x] = new Cell[height_];
-            for (int y = 0; y < height_; y++) 
-                cells_[x][y] = other.cells_[x][y];
+Field::Field(const Field& other) : width(other.width), length(other.length), entrance_x(other.entrance_x), entrance_y(other.entrance_y), exit_x(other.exit_x), exit_y(other.exit_y){
+    if (width >= MIN_WIDTH && length >= MIN_LENGTH) {
+        cell = new Cell*[width];
+        for (int x = 0; x < width; x++) {
+            cell[x] = new Cell[length];
+            for (int y = 0; y < length; y++)
+                cell[x][y] = other.cell[x][y];
         }
-   } else
+    } else
         std::cout << "Invalid field size!" << std::endl;
 }
 
 Field::Field(Field&& other) noexcept {
-    std::swap(width_, other.width_);
-    std::swap(height_, other.height_);
-    std::swap(entrance_x_, other.entrance_x_);
-    std::swap(entrance_y_, other.entrance_y_);
-    std::swap(exit_x_, other.exit_x_);
-    std::swap(exit_y_, other.exit_y_);
-    std::swap(cells_, other.cells_);
+    std::swap(width, other.width);
+    std::swap(length, other.length);
+    std::swap(entrance_x, other.entrance_x);
+    std::swap(entrance_y, other.entrance_y);
+    std::swap(exit_x, other.exit_x);
+    std::swap(exit_y, other.exit_y);
+    std::swap(cell, other.cell);
 }
 
-Field::Field(int width, int height) : width_(width), height_(height) {
-    if (width >= MIN_WIDTH && height >= MIN_HEIGHT) {
-        cells_ = new Cell*[width];
-        for (int i = 0; i < width; i++)
-            cells_[i] = new Cell[height];
-    } else 
-        std::cout << "Invalid field size!" << std::endl;
+bool Field::check(int x, int y) const {
+    if (x < 0 || x >= width || y < 0 || y >= length)
+        return false;
+    return true;
 }
+
+int Field::Get_Width() const {
+    return width;
+}
+
+int Field::Get_Length() const {
+    return length;
+}
+
+Cell& Field::Get_Cell(int x, int y) const {
+    return cell[x][y];
+}
+
+void Field::Set_Entrance(int x, int y) {
+    if (check(x, y) && cell[x][y].get_passability()) {
+        entrance_x = x;
+        entrance_y = y;
+    } else
+        std::cout << "Invalid entrance coordinates!" << std::endl;
+}
+
+int Field::Get_Entrance_X() const {
+    return entrance_x;
+}
+
+int Field::Get_Entrance_Y() const {
+    return entrance_y;
+}
+
+void Field::Set_Exit(int x, int y) {
+    if (check(x, y) && cell[x][y].get_passability()) {
+        exit_x = x;
+        exit_y = y;
+    } else
+        std::cout << "Invalid exit coordinates!" << std::endl;
+}
+
+int Field::Get_Exit_X() const {
+    return exit_x;
+}
+
+int Field::Get_Exit_Y() const {
+    return exit_y;
+}
+
+void Field::PRINT_FIELD(Player& player) const {
+     for (int y = 0; y < width; y++) {
+        for (int x = 0; x < length; x++) {
+            if (player.Get_X() == x && player.Get_Y() == y)
+                std::cout << "P ";
+            else if (entrance_x == x && entrance_y == y)
+                std::cout << "S ";
+        }
+        std::cout << std::endl;
+    }
+}
+
 
 Field::~Field() {
-    if (cells_ != nullptr) {
-        for (int i = 0; i < width_; i++)
-            delete[] cells_[i];
-        delete[] cells_;
+    if (cell != nullptr) {
+        for (int i = 0; i < width; i++)
+            delete[] cell[i];
+        delete[] cell;
     }
 }
