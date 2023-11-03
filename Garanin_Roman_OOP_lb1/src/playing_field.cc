@@ -3,7 +3,7 @@
 #include "headers/playing_field.h"
 
 Field::Field(int Value_Width, int Value_Length) : width(Value_Width), length(Value_Length) {
-    if (width >= MIN_WIDTH && height >= MIN_LENGTH) {
+    if (width >= MIN_WIDTH && length >= MIN_LENGTH) {
         cell = new Cell*[width];
         for (int i = 0; i < width; i++)
             cell[i] = new Cell[length];
@@ -98,7 +98,7 @@ Cell& Field::Get_Cell(int x, int y) const {
 }
 
 void Field::Set_Entrance(int x, int y) {
-    if (check(x, y) && cell[x][y].get_passability()) {
+    if (check(x, y) && cell[x][y].Get_State_of_cell()) {
         entrance_x = x;
         entrance_y = y;
     } else
@@ -114,7 +114,7 @@ int Field::Get_Entrance_Y() const {
 }
 
 void Field::Set_Exit(int x, int y) {
-    if (check(x, y) && cell[x][y].get_passability()) {
+    if (check(x, y) && cell[x][y].Get_State_of_cell()) {
         exit_x = x;
         exit_y = y;
     } else

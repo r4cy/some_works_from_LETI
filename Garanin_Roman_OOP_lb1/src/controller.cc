@@ -3,8 +3,8 @@
 
 
 Controller::Controller(Player& valueP, Field& valueF) : person(valueP), field(valueF){
-    valueP.Set_X(field.get_entrance_x());
-    valueP.Set_Y(field.get_entrance_y());
+    valueP.Set_X(field.Get_Entrance_X());
+    valueP.Set_Y(field.Get_Entrance_Y());
 }
 
 void Controller::Walking(Joystick value){
@@ -28,20 +28,28 @@ void Controller::Walking(Joystick value){
             std::cout<<"STEP RIGHT!\n\n";
             break;
         default:
-            std::cout<<"ERROR, UNCORRECT STEP!\n\n";
+            std::cout<<"ERROR, UNIDENTIFIED STEP!\n\n";
             break;
     }
-    person.Set_X_Y(temporary_x,temporary_y);
+    if(field.Get_Cell(temporary_x, temporary_y).Get_State_of_cell()){
+        person.Set_X_Y(temporary_x,temporary_y);
+        if(field.Get_Cell(temporary_x, temporary_y).CHECK_EVENT()){
+            field.Get_Cell(temporary_x, temporary_y);
+        }
+    }else{
+        std::cout<<"YOU CAN'T GO HERE"<<std::endl;
+    }
+
 }
 
-void Controller::change_health(int valueC_Health){
+void Controller::change_health(int ValueC_Health){
     int health = person.Get_Health();
-    person.Set_Health(health+valueC_Health);
+    person.Set_Health(health+ValueC_Health);
 }
 
-void Controller::change_points(int valueC_Points){
+void Controller::change_points(int ValueC_Points){
     int points = person.Get_Points();
-    person.Set_Points(points+valueC_Points);
+    person.Set_Points(points+ValueC_Points);
 }
 
 void Controller::change_level(int ValueC_Level){

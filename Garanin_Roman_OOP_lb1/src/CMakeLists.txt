@@ -14,7 +14,8 @@ add_executable(Garanin_Roman_OOP_lb
         teleport.cc
         first_aid_kit.cc
         mine.cc
-        builder_field.cc)
+        builder_field.cc
+        input_from_console.cpp)
 
 set_target_properties(Garanin_Roman_OOP_lb PROPERTIES
         OUTPUT_NAME main

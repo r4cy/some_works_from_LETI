@@ -13,8 +13,8 @@ public:
     Controller(Player& person, Field& field);
     void Walking(Joystick value);
 
-    void change_health(int valueC_Health);
-    void change_points(int valueC_Points);
+    void change_health(int ValueC_Health);
+    void change_points(int ValueC_Points);
     void change_level(int ValueC_Level);
 };
 

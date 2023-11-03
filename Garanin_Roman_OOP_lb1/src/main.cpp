@@ -1,12 +1,10 @@
-#include <iostream>
-
 #include "headers/controller.h"
 #include "headers/builder_field.h"
 
 int main() {
     FieldCreator level;
     Player player;
-    Field field(level.level_two());
+    Field field(level.Create_of_lvl1());
     Controller control(player, field);
 
     player.PRINT_VALUES();
