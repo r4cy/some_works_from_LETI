@@ -5,19 +5,22 @@
 Field::Field(int Value_Width, int Value_Length) : width(Value_Width), length(Value_Length) {
     if (width >= MIN_WIDTH && length >= MIN_LENGTH) {
         cell = new Cell*[width];
-        for (int i = 0; i < width; i++)
+        for (int i = 0; i < width; i++){
             cell[i] = new Cell[length];
-    } else
+        }
+        Set_Entrance(0, 0);
+        Set_Exit(0, length-1);
+    }else{
         std::cout << "" << std::endl;
+    }
 }
 
-Field& Field::operator = (const Field& other) {
+Field& Field::operator = (const Field& other){
     if (this != &other) {
-        if (cell != nullptr) {
-            for (int x = 0; x < width; x++)
-                delete[] cell[x];
-            delete[] cell;
+        for (int x = 0; x < width; x++){
+            delete[] cell[x];
         }
+        delete[] cell;
 
         width = other.width;
         length = other.length;
@@ -27,24 +30,25 @@ Field& Field::operator = (const Field& other) {
         exit_y = other.exit_y;
         if (width >= MIN_WIDTH && length >= MIN_LENGTH) {
             cell = new Cell*[width];
-            for (int x = 0; x < width; x++) {
+            for (int x = 0; x < width; x++){
                 cell[x] = new Cell[length];
-                for (int y = 0; y < width; y++)
+                for (int y = 0; y < width; y++){
                     cell[x][y] = other.cell[x][y];
+                }
             }
-        } else
+        }else{
             std::cout << "Invalid field size!" << std::endl;
+        }
     }
     return *this;
 }
 
 Field& Field::operator = (Field&& other) noexcept {
     if (this != &other) {
-        if (cell != nullptr) {
-            for (int x = 0; x < width; x++)
-                delete[] cell[x];
-            delete[] cell;
+        for (int x = 0; x < width; x++){
+            delete[] cell[x];
         }
+        delete[] cell;
 
         std::swap(width, other.width);
         std::swap(length, other.length);
@@ -141,11 +145,11 @@ void Field::PRINT_FIELD(Player& player) const {
     }
 }
 
-
 Field::~Field() {
     if (cell != nullptr) {
-        for (int i = 0; i < width; i++)
+        for (int i = 0; i < width; i++){
             delete[] cell[i];
+        }
         delete[] cell;
     }
 }

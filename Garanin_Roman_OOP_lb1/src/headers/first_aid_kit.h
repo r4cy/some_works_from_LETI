@@ -5,7 +5,7 @@
 
 class First_aid_kit: public Event {
 public:
-    void start (Controller& control) override;
+    void start(Controller& control) override;
     Event* create() const override;
 };
 

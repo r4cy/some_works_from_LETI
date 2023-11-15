@@ -1,1 +1,0 @@
-CMakeLists.txt not found in D:\LETI_works\OOP_works_c++\Garanin_Roman_OOP_lb1 Select CMakeLists.txt

@@ -43,7 +43,7 @@ public:
 
     void Set_X_Y(int valueX, int valueY);
 
-    char PRINT_VALUES();
+    char PRINT_VALUES() const;
 };
 
 #endif

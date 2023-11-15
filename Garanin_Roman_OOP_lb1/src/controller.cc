@@ -3,8 +3,8 @@
 
 
 Controller::Controller(Player& valueP, Field& valueF) : person(valueP), field(valueF){
-    valueP.Set_X(field.Get_Entrance_X());
-    valueP.Set_Y(field.Get_Entrance_Y());
+    person.Set_X(field.Get_Entrance_X());
+    person.Set_Y(field.Get_Entrance_Y());
 }
 
 void Controller::Walking(Joystick value){
@@ -12,11 +12,11 @@ void Controller::Walking(Joystick value){
     int temporary_y = person.Get_Y();
     switch (value){
         case Joystick::kUP:
-            temporary_y += 1;
+            temporary_y -= 1;
             std::cout<<"STEP UP!\n\n";
             break;
         case Joystick::kDOWN:
-            temporary_y -= 1;
+            temporary_y += 1;
             std::cout<<"STEP DOWN!\n\n";
             break;
         case Joystick::kLEFT:
@@ -34,12 +34,11 @@ void Controller::Walking(Joystick value){
     if(field.Get_Cell(temporary_x, temporary_y).Get_State_of_cell()){
         person.Set_X_Y(temporary_x,temporary_y);
         if(field.Get_Cell(temporary_x, temporary_y).CHECK_EVENT()){
-            field.Get_Cell(temporary_x, temporary_y);
+            field.Get_Cell(temporary_x, temporary_y).Launch(*this);
         }
     }else{
         std::cout<<"YOU CAN'T GO HERE"<<std::endl;
     }
-
 }
 
 void Controller::change_health(int ValueC_Health){

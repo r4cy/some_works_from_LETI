@@ -2,8 +2,8 @@
 #include "headers/cell.h"
 
 Cell::Cell(bool Value_state_of_cell, Event* Value_event) : state_of_cell(Value_state_of_cell), event(Value_event) {}
-
-Cell::Cell(const Cell& other) : state_of_cell(other.state_of_cell), event(other.event -> create()) {}
+// В конструкторе копирования отчищать событие ????
+Cell::Cell(const Cell& other) : state_of_cell(other.state_of_cell), event(other.event) {}
 
 Cell::Cell(Cell&& other) noexcept {
     std::swap(state_of_cell, other.state_of_cell);
@@ -13,9 +13,7 @@ Cell::Cell(Cell&& other) noexcept {
 Cell& Cell::operator = (const Cell& other) {
     if (this != &other) {
         state_of_cell = other.state_of_cell;
-        if(event != nullptr){
-            delete event;
-        }
+        DELETE_OF_CELL();
         event = other.event;
     }
     return *this;
@@ -24,9 +22,7 @@ Cell& Cell::operator = (const Cell& other) {
 Cell& Cell::operator = (Cell&& other) noexcept {
     if (this != &other) {
         std::swap(state_of_cell, other.state_of_cell);
-        if(event != nullptr){
-            delete event;
-        }
+        DELETE_OF_CELL();
         std::swap(event, other.event);
     }
     return *this;
@@ -51,6 +47,7 @@ bool Cell::Get_State_of_cell() const {
 
 void Cell::Launch(Controller &control) {
     event->start(control);
+//    DELETE_OF_CELL();
 }
 
 void Cell::DELETE_OF_CELL() {
