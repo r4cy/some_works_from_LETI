@@ -12,7 +12,6 @@ private:
     Teleport event_T;
     First_aid_kit event_F;
 
-
 public:
     Field Create_of_lvl1();
     Field Create_of_lvl2();

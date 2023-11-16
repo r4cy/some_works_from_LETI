@@ -2,7 +2,7 @@
 #include "headers/cell.h"
 
 Cell::Cell(bool Value_state_of_cell, Event* Value_event) : state_of_cell(Value_state_of_cell), event(Value_event) {}
-// В конструкторе копирования отчищать событие ????
+
 Cell::Cell(const Cell& other) : state_of_cell(other.state_of_cell), event(other.event) {}
 
 Cell::Cell(Cell&& other) noexcept {

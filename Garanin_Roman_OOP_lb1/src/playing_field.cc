@@ -136,10 +136,19 @@ int Field::Get_Exit_Y() const {
 void Field::PRINT_FIELD(Player& player) const {
      for (int y = 0; y < width; y++) {
         for (int x = 0; x < length; x++) {
-            if (player.Get_X() == x && player.Get_Y() == y)
+            if(player.Get_X() == x && player.Get_Y() == y){
                 std::cout << "P ";
-            else if (entrance_x == x && entrance_y == y)
-                std::cout << "S ";
+            }else if(entrance_x == x && entrance_y == y){
+                std::cout << "[]";
+            }else if(exit_x == x && exit_y == y){
+                std::cout << "{}";
+            }else if(Get_Cell(x, y).CHECK_EVENT()){
+                std::cout << "@ ";
+            } else if(!Get_Cell(x, y).Get_State_of_cell()){
+                std::cout << "# ";
+            }else{
+                std::cout << ". ";
+            }
         }
         std::cout << std::endl;
     }

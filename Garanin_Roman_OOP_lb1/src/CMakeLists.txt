@@ -15,7 +15,9 @@ add_executable(Garanin_Roman_OOP_lb
         first_aid_kit.cc
         mine.cc
         builder_field.cc
-        input_from_console.cpp)
+        input_from_keyboard.cc
+        interlayer.cpp
+        game.cpp)
 
 set_target_properties(Garanin_Roman_OOP_lb PROPERTIES
         OUTPUT_NAME main
