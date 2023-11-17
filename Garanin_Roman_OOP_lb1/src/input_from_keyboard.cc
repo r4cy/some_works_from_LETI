@@ -1,4 +1,4 @@
-#include "input_from_keyboard.h"
+#include "headers/input_from_keyboard.h"
 
 char Input_from_keyboard::Input_function() const{
     char symbol;

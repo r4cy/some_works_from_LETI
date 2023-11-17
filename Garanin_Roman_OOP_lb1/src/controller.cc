@@ -13,32 +13,33 @@ void Controller::Walking(Joystick value){
     switch (value){
         case Joystick::kUP:
             temporary_y -= 1;
-            std::cout<<"STEP UP!\n\n";
+            // std::cout<<"STEP UP!\n\n";
             break;
         case Joystick::kDOWN:
             temporary_y += 1;
-            std::cout<<"STEP DOWN!\n\n";
+            // std::cout<<"STEP DOWN!\n\n";
             break;
         case Joystick::kLEFT:
             temporary_x -= 1;
-            std::cout<<"STEP LEFT!\n\n";
+            // std::cout<<"STEP LEFT!\n\n";
             break;
         case Joystick::kRIGHT:
             temporary_x += 1;
-            std::cout<<"STEP RIGHT!\n\n";
+            // std::cout<<"STEP RIGHT!\n\n";
             break;
         default:
             std::cout<<"ERROR, UNIDENTIFIED STEP!\n\n";
             break;
     }
-    if(field.Get_Cell(temporary_x, temporary_y).Get_State_of_cell()){
+    
+    if(field.check(temporary_x, temporary_y) && field.Get_Cell(temporary_x, temporary_y).Get_State_of_cell()){
         person.Set_X_Y(temporary_x,temporary_y);
+        std::cout << "STEP GOOOD!";
         if(field.Get_Cell(temporary_x, temporary_y).CHECK_EVENT()){
             field.Get_Cell(temporary_x, temporary_y).Launch(*this);
         }
-    }else{
-        std::cout<<"YOU CAN'T GO HERE"<<std::endl;
     }
+    person.PRINT_VALUES();
 }
 
 void Controller::change_health(int ValueC_Health){

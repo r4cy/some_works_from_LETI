@@ -1,4 +1,4 @@
-#include "game.h"
+#include "headers/game.h"
 Game::Game(Interlayer &Value_layer): layer(Value_layer) {}
 
 void Game::Begin() {
@@ -89,6 +89,5 @@ void Game::The_end() {
         }else{
             continue;
         }
-        system("cls");
     }
 }

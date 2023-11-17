@@ -57,6 +57,14 @@ Field& Field::operator = (Field&& other) noexcept {
         std::swap(exit_x, other.exit_x);
         std::swap(exit_y, other.exit_y);
         std::swap(cell, other.cell);
+
+        other.width = 0;
+        other.length = 0;
+        other.entrance_x = 0;
+        other.entrance_y = 0;
+        other.exit_x = 0;
+        other.exit_y = 0;
+        other.cell = nullptr;
     }
     return *this;
 }

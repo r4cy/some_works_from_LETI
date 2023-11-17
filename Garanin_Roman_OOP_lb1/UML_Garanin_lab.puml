@@ -33,8 +33,20 @@ class Game {
     + Begin(): void
 }
 
-Input_from_keyboard <|.. Input_Interface
-Interlayer o-- Input_from_keyboard : input
+enum Action{
+    kMOVE_up
+    kMOVE_down
+    kMOVE_left
+    kMOVE_right
+    kGO_quit
+    kSAY_yes
+    kSAY_no
+    kUN_KNOW
+}
+
+Input_Interface <|.. Input_from_keyboard
+Interlayer o-- Input_Interface : input
+Interlayer *-- Action: command
 Game o-- Interlayer : layer
 
 @enduml

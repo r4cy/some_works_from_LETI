@@ -18,7 +18,7 @@ int Player::Set_Health(int valueHealth){
         return 0;
     }
     if(valueHealth <= 0){
-        std::cout<<"YOU DIED!"<<std::endl;
+        health = 0;
         return 1;
     }
     health = valueHealth;

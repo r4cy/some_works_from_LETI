@@ -1,4 +1,4 @@
-#include "interlayer.h"
+#include "headers/interlayer.h"
 
 Action Interlayer::Get_action() {
     char key = input.Input_function();
@@ -55,7 +55,7 @@ Interlayer::Interlayer(Input_Interface& Value_input, const std::string& file_for
 }
 
 Action Interlayer::Decoding_action(const std::string& action) {
-    if (action == "up")
+    if (action == "UP")
         return Action::kMOVE_up;
     else if (action == "DOWN")
         return Action::kMOVE_down;
