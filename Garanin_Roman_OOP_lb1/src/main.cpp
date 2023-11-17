@@ -1,12 +1,10 @@
-#include "headers/controller.h"
-#include "headers/builder_field.h"
+#include "game.h"
+#include "input_from_keyboard.h"
 
 int main() {
-
-
-//    player.PRINT_VALUES(); Как можно выводить, обязательно ли передавать ссылки
-//    field.PRINT_FIELD(player);
-//    Game new_game;
-//    new_game.
+    Input_from_keyboard input;
+    Interlayer layer(input, "./control_keys");
+    Game new_game(layer);
+    new_game.Begin();
     return 0;
 }

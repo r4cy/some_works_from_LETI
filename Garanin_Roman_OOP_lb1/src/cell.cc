@@ -47,7 +47,7 @@ bool Cell::Get_State_of_cell() const {
 
 void Cell::Launch(Controller &control) {
     event->start(control);
-//    DELETE_OF_CELL();
+    DELETE_OF_CELL();
 }
 
 void Cell::DELETE_OF_CELL() {

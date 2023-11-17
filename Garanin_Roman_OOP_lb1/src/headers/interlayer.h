@@ -3,6 +3,7 @@
 
 #include <string>
 #include <iostream>
+#include <fstream>
 #include <unordered_map>
 
 #include "input_interface.h"
@@ -11,11 +12,13 @@
 class Interlayer {
 private:
     Input_Interface& input;
-    std::unordered_map<char, std::string> command;
+    std::unordered_map<char, Action> command;
 
+    Action Decoding_action(const std::string& action);
 
 public:
-
+    Action Get_action();
+    Interlayer(Input_Interface& input, const std::string& file_for_control);
 
 };
 

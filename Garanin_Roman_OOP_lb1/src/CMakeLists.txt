@@ -16,8 +16,8 @@ add_executable(Garanin_Roman_OOP_lb
         mine.cc
         builder_field.cc
         input_from_keyboard.cc
-        interlayer.cpp
-        game.cpp)
+        interlayer.cc
+        game.cc)
 
 set_target_properties(Garanin_Roman_OOP_lb PROPERTIES
         OUTPUT_NAME main

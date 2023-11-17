@@ -1,2 +1,40 @@
 @startuml UML_Garanin_lab.puml
+
+hide circle
+skinparam classAttributeIconSize 0
+
+abstract class Input_Interface {
+    + Input_function(): virtual char
+}
+
+class Input_from_keyboard {
+    + Input_function(): char override
+}
+
+class Interlayer {
+    - input: Input_Interface&
+    - command: std::unordered_map<char, Actions>
+    - Decoding_action(action: const std::string&)
+    --
+    + Get_action(): Action
+    + Interlayer(input: Input&, file: const std::string&)
+}
+
+class Game {
+    - field: Field
+    - layer: Interlayer&
+    - create_field: FieldCreator
+
+    - Choose_lvl_of_map(): void
+    - Play(): void
+    - The_end(): void
+    --
+    + Game(Value_layer: Interlayer&)
+    + Begin(): void
+}
+
+Input_from_keyboard <|.. Input_Interface
+Interlayer o-- Input_from_keyboard : input
+Game o-- Interlayer : layer
+
 @enduml

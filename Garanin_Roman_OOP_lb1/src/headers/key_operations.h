@@ -8,7 +8,8 @@ enum class Action{
     kMOVE_right,
     kGO_quit,
     kSAY_yes,
-    kSAY_no
+    kSAY_no,
+    kUN_KNOW
 };
 
 #endif
