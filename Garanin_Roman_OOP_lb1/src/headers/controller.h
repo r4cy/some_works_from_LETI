@@ -1,7 +1,7 @@
 #ifndef CONTROLLER_H_
 #define CONTROLLER_H_
 
-#include "states_walk.h"
+#include "enum_states_walk.h"
 #include "player.h"
 #include "playing_field.h"
 

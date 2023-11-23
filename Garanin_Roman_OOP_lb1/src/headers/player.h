@@ -1,7 +1,7 @@
 #ifndef PLAYER_H_
 #define PLAYER_H_
 
-#include "states_walk.h"
+#include "enum_states_walk.h"
 
 #define kMAX_health 100
 #define kSTART_points 0

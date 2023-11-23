@@ -3,50 +3,6 @@
 hide circle
 skinparam classAttributeIconSize 0
 
-abstract class Input_Interface {
-    + Input_function(): virtual char
-}
 
-class Input_from_keyboard {
-    + Input_function(): char override
-}
-
-class Interlayer {
-    - input: Input_Interface&
-    - command: std::unordered_map<char, Actions>
-    - Decoding_action(action: const std::string&)
-    --
-    + Get_action(): Action
-    + Interlayer(input: Input&, file: const std::string&)
-}
-
-class Game {
-    - field: Field
-    - layer: Interlayer&
-    - create_field: FieldCreator
-
-    - Choose_lvl_of_map(): void
-    - Play(): void
-    - The_end(): void
-    --
-    + Game(Value_layer: Interlayer&)
-    + Begin(): void
-}
-
-enum Action{
-    kMOVE_up
-    kMOVE_down
-    kMOVE_left
-    kMOVE_right
-    kGO_quit
-    kSAY_yes
-    kSAY_no
-    kUN_KNOW
-}
-
-Input_Interface <|.. Input_from_keyboard
-Interlayer o-- Input_Interface : input
-Interlayer *-- Action: command
-Game o-- Interlayer : layer
 
 @enduml
