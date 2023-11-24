@@ -1,4 +1,5 @@
 #include <cstdlib>
+#include <iostream>
 #include "headers/tracker.h"
 
 Tracker::Tracker(Interface_render& Value_render, Player& Value_player, Field& Value_field) : render(Value_render), player(Value_player), field(Value_field) {}

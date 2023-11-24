@@ -1,11 +1,12 @@
 #include "headers/game.h"
-#include "controller.h"
+#include "headers/controller.h"
 
 Game::Game(Input_Interface& Value_input, Interface_render& Value_render): input(Value_input), render(Value_render) {}
 
 void Game::Begin() {
     Player player;
-    Interlayer layer(input, "\"D:\\\\LETI_works\\\\OOP_works_c++\\\\Works_from_LETI\\\\Garanin_Roman_OOP_lb1\\\\src\\\\control_keys\"");
+    std::string filename = "D:\\LETI_works\\OOP_works_c++\\Works_from_LETI\\Garanin_Roman_OOP_lb1\\src\\control_keys";
+    Interlayer layer(input, filename);
     Tracker tracker(render, player, field);
     tracker.Checking_the_state(States_game::kSTART);
     Choose_lvl_of_map(tracker);
@@ -39,7 +40,7 @@ void Game::Play(Player& player, Interlayer& layer, Tracker& tracker) {
     Joystick joystick;
 
     do{
-
+        tracker.Checking_the_state(States_game::kPLAY);
         if(player.Get_Health() <= 0){
             tracker.Checking_the_state(States_game::kLOOSE);
             break;

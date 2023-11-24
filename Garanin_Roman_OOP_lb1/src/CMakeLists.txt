@@ -18,8 +18,8 @@ add_executable(Garanin_Roman_OOP_lb
         input_from_keyboard.cc
         interlayer.cc
         game.cc
-        tracker.cс
-        terminal_render.cс)
+        tracker.cc
+        terminal_render.cc)
 
 set_target_properties(Garanin_Roman_OOP_lb PROPERTIES
         OUTPUT_NAME main

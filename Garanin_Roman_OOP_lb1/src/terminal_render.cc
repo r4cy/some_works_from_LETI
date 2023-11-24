@@ -25,15 +25,15 @@ void Terminal_render::Print_playing_field(Player& player, Field& field) const {
         for (int x = 0; x < field.Get_Length(); x++) {
             if (player.Get_X() == x && player.Get_Y() == y)
                 std::cout << "P ";
-            else if (field.Get_Exit_X() == x && field.Get_Entrance_Y() == y)
+            else if (field.Get_Entrance_X() == x && field.Get_Entrance_Y() == y)
                 std::cout << "[]";
             else if (field.Get_Exit_X() == x && field.Get_Exit_Y() == y)
                 std::cout << "{}";
-            else if (field.Get_Cell(x, y).CHECK_EVENT() && typeid(field.Get_Cell(x, y).Get_EVENT()) == typeid(First_aid_kit))
+            else if (field.Get_Cell(x, y).CHECK_EVENT() && typeid(*field.Get_Cell(x, y).Get_EVENT()) == typeid(First_aid_kit))
                 std::cout << "+ ";
-            else if (field.Get_Cell(x, y).CHECK_EVENT() && typeid(field.Get_Cell(x, y).Get_EVENT()) == typeid(Mine))
+            else if (field.Get_Cell(x, y).CHECK_EVENT() && typeid(*field.Get_Cell(x, y).Get_EVENT()) == typeid(Mine))
                 std::cout << "@ ";
-            else if (field.Get_Cell(x, y).CHECK_EVENT() && typeid(field.Get_Cell(x, y).Get_EVENT()) == typeid(Teleport))
+            else if (field.Get_Cell(x, y).CHECK_EVENT() && typeid(*field.Get_Cell(x, y).Get_EVENT()) == typeid(Teleport))
                 std::cout << "0 ";
             else if (!field.Get_Cell(x, y).Get_State_of_cell())
                 std::cout << "# ";

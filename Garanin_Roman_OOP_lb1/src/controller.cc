@@ -34,7 +34,6 @@ void Controller::Walking(Joystick value){
     
     if(field.check(temporary_x, temporary_y) && field.Get_Cell(temporary_x, temporary_y).Get_State_of_cell()){
         person.Set_X_Y(temporary_x,temporary_y);
-        std::cout << "STEP GOOOD!";
         if(field.Get_Cell(temporary_x, temporary_y).CHECK_EVENT()){
             field.Get_Cell(temporary_x, temporary_y).Launch(*this);
         }

@@ -8,6 +8,8 @@ Cell::Cell(const Cell& other) : state_of_cell(other.state_of_cell), event(other.
 Cell::Cell(Cell&& other) noexcept {
     std::swap(state_of_cell, other.state_of_cell);
     std::swap(event, other.event);
+    other.state_of_cell = 0;
+    other.event = nullptr;
 }
 
 Cell& Cell::operator = (const Cell& other) {
@@ -24,6 +26,8 @@ Cell& Cell::operator = (Cell&& other) noexcept {
         std::swap(state_of_cell, other.state_of_cell);
         DELETE_OF_CELL();
         std::swap(event, other.event);
+        other.state_of_cell = 0;
+        other.event = nullptr;
     }
     return *this;
 }
