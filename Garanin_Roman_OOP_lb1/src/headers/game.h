@@ -2,21 +2,22 @@
 #define GAME_H_
 
 #include "interlayer.h"
+#include "tracker.h"
 #include "builder_field.h"
-#include "controller.h"
 
 class Game {
 private:
     Field field;
-    Interlayer& layer;
+    Input_Interface& input;
+    Interface_render& render;
     FieldCreator create_field;
 
-    void Choose_lvl_of_map();
-    void Play();
-    void The_end();
+    void Choose_lvl_of_map(Tracker& tracker);
+    void Play(Player& player, Interlayer& layer, Tracker& tracker);
+    void The_end(Interlayer& layer, Tracker& tracker);
 
 public:
-    Game(Interlayer& Value_layer);
+    Game(Input_Interface& Value_input, Interface_render& Value_render);
     void Begin();
 
 

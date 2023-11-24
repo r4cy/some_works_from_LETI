@@ -18,6 +18,7 @@ public:
     Cell& operator = (Cell&& other) noexcept;
 
     void Set_Event(Event* Value_event);
+    Event* Get_EVENT();
     bool CHECK_EVENT() const;
     void Set_State_of_cell(bool Value_state_of_cell);
     bool Get_State_of_cell() const;

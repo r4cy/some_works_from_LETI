@@ -1,18 +1,23 @@
 #include "headers/game.h"
-Game::Game(Interlayer &Value_layer): layer(Value_layer) {}
+#include "controller.h"
+
+Game::Game(Input_Interface& Value_input, Interface_render& Value_render): input(Value_input), render(Value_render) {}
 
 void Game::Begin() {
-    std::cout << "Hello and Welcome in my Game!" << std::endl;
-    Choose_lvl_of_map();
-    Play();
-    The_end();
+    Player player;
+    Interlayer layer(input, "\"D:\\\\LETI_works\\\\OOP_works_c++\\\\Works_from_LETI\\\\Garanin_Roman_OOP_lb1\\\\src\\\\control_keys\"");
+    Tracker tracker(render, player, field);
+    tracker.Checking_the_state(States_game::kSTART);
+    Choose_lvl_of_map(tracker);
+    Play(player, layer, tracker);
+    The_end(layer, tracker);
 }
 
-void Game::Choose_lvl_of_map() {
+void Game::Choose_lvl_of_map(Tracker& tracker) {
+    tracker.Checking_the_state(States_game::kLEVEL);
     while (true){
         int LVL;
 
-        std::cout << "Choose a level of map (1 or 2):" << std::endl;
         std::cin >> LVL;
 
         if(LVL == 1){
@@ -28,31 +33,24 @@ void Game::Choose_lvl_of_map() {
     }
 }
 
-void Game::Play() {
-    Player player;
+void Game::Play(Player& player, Interlayer& layer, Tracker& tracker) {
     Controller contr(player, field);
     Action button;
     Joystick joystick;
 
-    while(true){
-        player.PRINT_VALUES();
-        field.PRINT_FIELD(player);
+    do{
 
         if(player.Get_Health() <= 0){
-            std::cout << "You're dead!" <<std::endl;
+            tracker.Checking_the_state(States_game::kLOOSE);
             break;
         }
 
         if(player.Get_X() == field.Get_Exit_X() && player.Get_Y() == field.Get_Exit_Y()){
-            std::cout << "Congratulations, you have reached the finish line!" << std::endl;
+            tracker.Checking_the_state(States_game::kWIN);
             break;
         }
 
-        std::cout << "To move, use the keys: W - UP, S - DOWN, A - LEFT, D - RIGHT." << std::endl;
         button = layer.Get_action();
-
-        if (button == Action::kGO_quit)
-            break;
 
         switch (button) {
             case Action::kMOVE_up:
@@ -71,20 +69,19 @@ void Game::Play() {
                 continue;
         }
         contr.Walking(joystick);
-        system("cls");
-    }
+    } while (button != Action::kGO_quit);
 }
 
-void Game::The_end() {
-    Action action;
-
+void Game::The_end(Interlayer& layer, Tracker& tracker) {
+    Action button;
+    tracker.Checking_the_state(States_game::kNEW);
     while (true){
-        std::cout<< "Do you want to restart the game ?(SEND: Y - YES/N - NO)" <<std::endl;
-        action = layer.Get_action();
+        button = layer.Get_action();
 
-        if(action == Action::kSAY_yes){
+        if(button == Action::kSAY_yes){
             Begin();
-        }else if(action == Action::kSAY_no){
+        }else if(button == Action::kSAY_no){
+            tracker.Checking_the_state(States_game::kEND);
             exit(0);
         }else{
             continue;

@@ -33,6 +33,10 @@ void Cell::Set_Event(Event* Value_event) {
     event = Value_event;
 }
 
+Event *Cell::Get_EVENT() {
+    return event;
+}
+
 bool Cell::CHECK_EVENT() const {
     return event != nullptr;
 }

@@ -17,7 +17,9 @@ add_executable(Garanin_Roman_OOP_lb
         builder_field.cc
         input_from_keyboard.cc
         interlayer.cc
-        game.cc)
+        game.cc
+        tracker.cс
+        terminal_render.cс)
 
 set_target_properties(Garanin_Roman_OOP_lb PROPERTIES
         OUTPUT_NAME main
