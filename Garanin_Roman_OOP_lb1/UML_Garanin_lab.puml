@@ -3,40 +3,5 @@
 hide circle
 skinparam classAttributeIconSize 0
 
-class Tracker {
-    - field: Field&
-    - player: Player&
-    - render: Interface_render&
-    --
-    + Checking_the_state(state: States_game): void
-    + Tracker(Value_render: Interface_render&, Value_player: Player&, Value_field: Field&)
-}
-
-abstract class Render {
-    + Print_playing_field(player: Player&, field: Field&): virtual void
-    + Print_player(player: Player&): virtual void
-    + Print_start(): virtual void
-    + Print_level(): virtual void
-    + Print_win(): virtual void
-    + Print_lose(): virtual void
-    + Print_game(): virtual void
-    + Print_new_game(): virtual void
-    + Print_the_end(): virtual void
-}
-
-class RenderTerminal {
-    + Print_playing_field(player: Player&, field: Field&): void override
-    + Print_player(player: Player&): void override
-    + Print_start(): void override
-    + Print_level(): void override
-    + Print_win(): void override
-    + Print_lose(): void override
-    + Print_game(): void override
-    + Print_new_game(): void override
-    + Print_the_end(): void override
-}
-
-Tracker o-- Render : render
-Render <|.. RenderTerminal
 
 @enduml
