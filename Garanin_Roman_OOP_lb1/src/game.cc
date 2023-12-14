@@ -5,7 +5,7 @@ Game::Game(Input_Interface& Value_input, Interface_render& Value_render): input(
 
 void Game::Begin() {
     Player player;
-    std::string filename = "D:\\LETI_works\\OOP_works_c++\\Works_from_LETI\\Garanin_Roman_OOP_lb1\\src\\control_keys";
+    std::string filename = "control_keys";
     Interlayer layer(input, filename);
     Tracker tracker(render, player, field);
     tracker.Checking_the_state(States_game::kSTART);
@@ -73,7 +73,7 @@ void Game::Play(Player& player, Interlayer& layer, Tracker& tracker) {
     } while (button != Action::kGO_quit);
 }
 
-void Game::The_end(Interlayer& layer, Tracker& tracker) {
+int Game::The_end(Interlayer& layer, Tracker& tracker) {
     Action button;
     tracker.Checking_the_state(States_game::kNEW);
     while (true){
@@ -83,7 +83,7 @@ void Game::The_end(Interlayer& layer, Tracker& tracker) {
             Begin();
         }else if(button == Action::kSAY_no){
             tracker.Checking_the_state(States_game::kEND);
-            exit(0);
+            return 0;
         }else{
             continue;
         }

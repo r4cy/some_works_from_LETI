@@ -7,7 +7,17 @@ Action Interlayer::Get_action() {
         action = Action::kUN_KNOW;
     else
         action = command[key];
+    button = key;
+    actions = action;
     return action;
+}
+
+Action Interlayer::Get_last_actions() const {
+    return actions;
+}
+
+char Interlayer::Get_last_button() const {
+    return button;
 }
 
 Interlayer::Interlayer(Input_Interface& Value_input, const std::string& file_for_control) : input(Value_input) {

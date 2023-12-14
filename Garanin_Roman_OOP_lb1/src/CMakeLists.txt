@@ -19,7 +19,17 @@ add_executable(Garanin_Roman_OOP_lb
         interlayer.cc
         game.cc
         tracker.cc
-        terminal_render.cc)
+        terminal_render.cc
+        massage_log_win.cpp
+        massage_log_lose.cpp
+        massage_log_new_game.cpp
+        massage_log_new_game.cpp
+        massage_key_push.cpp
+        massage_key_not_work.cpp
+        headers/massage_key_not_work.h
+        headers/logger.h
+        log_of_file.cpp
+        headers/log_of_file.h)
 
 set_target_properties(Garanin_Roman_OOP_lb PROPERTIES
         OUTPUT_NAME main

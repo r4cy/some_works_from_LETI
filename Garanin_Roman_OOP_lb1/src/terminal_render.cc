@@ -45,7 +45,7 @@ void Terminal_render::Print_playing_field(Player& player, Field& field) const {
 }
 
 void Terminal_render::Print_game() const {
-    std::cout << "To move, use the keys: W - UP, S - DOWN, A - LEFT, D - RIGHT." << std::endl;
+    //std::cout << "To move, use the keys: W - UP, S - DOWN, A - LEFT, D - RIGHT." << std::endl;
 }
 
 void Terminal_render::Print_new_game() const {

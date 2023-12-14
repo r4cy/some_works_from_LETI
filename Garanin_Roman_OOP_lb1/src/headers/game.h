@@ -14,7 +14,7 @@ private:
 
     void Choose_lvl_of_map(Tracker& tracker);
     void Play(Player& player, Interlayer& layer, Tracker& tracker);
-    void The_end(Interlayer& layer, Tracker& tracker);
+    int The_end(Interlayer& layer, Tracker& tracker);
 
 public:
     Game(Input_Interface& Value_input, Interface_render& Value_render);
