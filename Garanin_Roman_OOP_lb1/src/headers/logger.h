@@ -1,11 +1,11 @@
 #ifndef LOGGER_H_
 #define LOGGER_H_
 
-#include "massage.h"
+#include "message.h"
 
 class Logger{
 public:
-    virtual void log(Massage* massage) = 0;
+    virtual void log(Message* message) = 0;
 };
 
 #endif

@@ -20,14 +20,14 @@ add_executable(Garanin_Roman_OOP_lb
         game.cc
         tracker.cc
         terminal_render.cc
-        massage_log_win.cpp
-        massage_log_lose.cpp
-        massage_log_new_game.cpp
-        massage_log_new_game.cpp
-        massage_key_push.cpp
-        massage_key_not_work.cpp
-        log_of_file.cpp
-        log_of_terminal.cpp)
+        message_log_win.cc
+        message_log_lose.cc
+        message_log_new_game.cc
+        message_log_new_game.cc
+        message_key_push.cc
+        message_key_not_work.cc
+        log_of_file.cc
+        log_of_terminal.cc)
 
 set_target_properties(Garanin_Roman_OOP_lb PROPERTIES
         OUTPUT_NAME main

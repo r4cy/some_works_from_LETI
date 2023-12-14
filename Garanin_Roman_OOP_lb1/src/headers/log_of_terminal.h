@@ -6,8 +6,7 @@
 
 class Log_of_terminal: public Logger{
 public:
-    void log(Massage *massage) override;
-
+    void log(Message *message) override;
 };
 
 

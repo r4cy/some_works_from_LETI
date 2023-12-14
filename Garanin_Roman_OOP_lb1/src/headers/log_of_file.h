@@ -12,9 +12,8 @@ private:
 
 public:
     Log_of_file();
-    void log(Massage* massage) override;
+    void log(Message* message) override;
     ~Log_of_file();
-
 };
 
 

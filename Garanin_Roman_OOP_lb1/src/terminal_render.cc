@@ -57,7 +57,7 @@ void Terminal_render::Print_game() const {
 }
 
 void Terminal_render::Print_new_game() const {
-    std::cout<< "Do you want to restart the game ?(SEND: Y - YES/N - NO)" <<std::endl;
+    std::cout<< "Do you want to restart the game ?(y - YES, n - NO)" <<std::endl;
 }
 
 void Terminal_render::Print_the_end() const {

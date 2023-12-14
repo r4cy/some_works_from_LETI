@@ -7,8 +7,8 @@ Log_of_file::Log_of_file() {
     }
 }
 
-void Log_of_file::log(Massage *massage) {
-    file << massage->Get_MASSAGE() << std::endl;
+void Log_of_file::log(Message *message) {
+    file << message->Get_MESSAGE() << std::endl;
 }
 
 Log_of_file::~Log_of_file() {
