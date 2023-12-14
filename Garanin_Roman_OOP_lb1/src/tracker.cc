@@ -15,6 +15,9 @@ void Tracker::Checking_the_state(States_game state, std::vector<Logger*> logger)
         case States_game::kSTART:
             render.Print_start();
             break;
+        case States_game::kLOGGER:
+            render.Print_logger();
+            break;
         case States_game::kCHOOSE_LOGGER:
             render.Print_choose_logger();
             break;
@@ -55,9 +58,7 @@ void Tracker::Checking_the_state(States_game state, std::vector<Logger*> logger)
 }
 
 void Tracker::Make_log(std::vector<Logger*> logger, Massage* massage) {
-    std::cout<<logger.size()<<"\n";
     for(int i = 0; i < logger.size(); i++){
-        std::cout << i << std::endl;
         logger[i]->log(massage);
     }
 }

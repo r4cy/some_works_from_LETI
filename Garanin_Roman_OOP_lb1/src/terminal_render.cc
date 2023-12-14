@@ -4,8 +4,12 @@ void Terminal_render::Print_start() const {
     std::cout << "Hello and Welcome in my Game!" << std::endl;
 }
 
-void Terminal_render::Print_choose_logger() const {
+void Terminal_render::Print_logger() const {
     std::cout << "DO YOU NEED A LOGGER? (Y - YES, N - NO): " << std::endl;
+}
+
+void Terminal_render::Print_choose_logger() const {
+    std::cout << "WHAT KIND OF LOGGER YOU WANT (1 - file, 2 - terminal, 3 - both): " << std::endl;
 }
 
 void Terminal_render::Print_level() const {
@@ -21,7 +25,7 @@ void Terminal_render::Print_lose() const {
 }
 
 void Terminal_render::Print_player(Player& player) const {
-    std::cout<<"\n\nHealth = " << player.Get_Health() << "\nPoints = " << player.Get_Points() << "\nLevel = " << player.Get_Level() << "\nX, Y = " << player.Get_X() << ", " << player.Get_Y() << "\n\n";
+    std::cout<<"Health = " << player.Get_Health() << "\nPoints = " << player.Get_Points() << "\nLevel = " << player.Get_Level() << "\nX, Y = " << player.Get_X() << ", " << player.Get_Y() << "\n\n";
 }
 
 void Terminal_render::Print_playing_field(Player& player, Field& field) const {
@@ -61,5 +65,5 @@ void Terminal_render::Print_the_end() const {
 }
 
 void Terminal_render::Clear() const {
-//    system("cls");
+    system("cls");
 }

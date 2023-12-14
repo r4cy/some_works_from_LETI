@@ -9,6 +9,7 @@ public:
     virtual void Print_playing_field(Player& player, Field& field) const = 0;
     virtual void Print_player(Player& player) const = 0;
     virtual void Print_start() const = 0;
+    virtual void Print_logger() const = 0;
     virtual void Print_choose_logger() const = 0;
     virtual void Print_level() const = 0;
     virtual void Print_win() const = 0;

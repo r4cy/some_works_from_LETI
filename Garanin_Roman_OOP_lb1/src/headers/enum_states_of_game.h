@@ -12,6 +12,7 @@ enum class States_game{
     kGAME,
     kKEY,
     kKEY_COMMAND,
+    kLOGGER,
     kCHOOSE_LOGGER
 };
 

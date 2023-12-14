@@ -6,43 +6,47 @@ Game::Game(Input_Interface& Value_input, Interface_render& Value_render): input(
 
 void Game::Begin() {
     Player player;
-    std::string filename = "D:\\LETI_works\\OOP_works_c++\\Works_from_LETI\\Garanin_Roman_OOP_lb1\\src\\control_keys";
+    std::string filename = "control_keys";
     Interlayer layer(input, filename);
     Tracker tracker(render, layer, player, field);
     tracker.Checking_the_state(States_game::kSTART, logger);
     if(flag){
         Choose_logger(layer, tracker);
     }
-    Choose_lvl_of_map(tracker);
+    Choose_lvl_of_map(layer, tracker);
     Play(player, layer, tracker);
     The_end(layer, tracker);
 }
 
 void Game::Choose_logger(Interlayer &interlayer, Tracker &tracker) {
-    tracker.Checking_the_state(States_game::kCHOOSE_LOGGER, logger);
+    tracker.Checking_the_state(States_game::kLOGGER, logger);
     flag = false;
     Action button;
     while(true){
         button = interlayer.Get_action();
         if(button == Action::kSAY_yes){
-            int digit;
+            while (true){
+                tracker.Checking_the_state(States_game::kCHOOSE_LOGGER, logger);
 
-            std::cin >> digit;
+                button = interlayer.Get_action();
 
-            if(digit == 1){
-                logger.push_back(new Log_of_file);
-                break;
-            }else if(digit == 2){
-                logger.push_back(new Log_of_terminal);
-                break;
-            }else if(digit == 3){
-                logger.push_back(new Log_of_terminal);
-                logger.push_back(new Log_of_file);
-                break;
-            }else{
-                std::cout << "Wrong level, try again!" << std::endl;
-                continue;
+                if(button == Action::kONE){
+                    tracker.Checking_the_state(States_game::kKEY_COMMAND, logger);
+                    logger.push_back(new Log_of_file);
+                    break;
+                }else if(button == Action::kTWO){
+                    tracker.Checking_the_state(States_game::kKEY_COMMAND, logger);
+                    logger.push_back(new Log_of_terminal);
+                    break;
+                }else if(button == Action::kTHREE){
+                    tracker.Checking_the_state(States_game::kKEY_COMMAND, logger);
+                    logger.push_back(new Log_of_terminal);
+                    logger.push_back(new Log_of_file);
+                    break;
+                }
+                tracker.Checking_the_state(States_game::kKEY, logger);
             }
+            break;
         }else if(button == Action::kSAY_no){
             if(!logger.empty()){
                 for(int i = 0; i < logger.size(); i++){
@@ -50,28 +54,27 @@ void Game::Choose_logger(Interlayer &interlayer, Tracker &tracker) {
                     logger[i] = nullptr;
                 }
             }
+            break;
         }
     }
-    std::cout << logger.size()<<std::endl;
 }
 
-void Game::Choose_lvl_of_map(Tracker& tracker) {
-    tracker.Checking_the_state(States_game::kLEVEL, logger);
+void Game::Choose_lvl_of_map(Interlayer& interlayer, Tracker& tracker) {
+    Action button;
     while (true){
-        int LVL;
+        tracker.Checking_the_state(States_game::kLEVEL, logger);
+        button = interlayer.Get_action();
 
-        std::cin >> LVL;
-
-        if(LVL == 1){
+        if(button == Action::kONE){
+            tracker.Checking_the_state(States_game::kKEY_COMMAND, logger);
             field = create_field.Create_of_lvl1();
             break;
-        }else if(LVL == 2){
+        }else if(button == Action::kTWO){
+            tracker.Checking_the_state(States_game::kKEY_COMMAND, logger);
             field = create_field.Create_of_lvl2();
             break;
-        }else{
-            std::cout << "Wrong level, try again!" << std::endl;
-            continue;
         }
+        tracker.Checking_the_state(States_game::kKEY, logger);
     }
 }
 
@@ -97,38 +100,48 @@ void Game::Play(Player& player, Interlayer& layer, Tracker& tracker) {
 
         switch (button) {
             case Action::kMOVE_up:
+                tracker.Checking_the_state(States_game::kKEY_COMMAND, logger);
                 joystick = Joystick::kUP;
                 break;
             case Action::kMOVE_left:
+                tracker.Checking_the_state(States_game::kKEY_COMMAND, logger);
                 joystick = Joystick::kLEFT;
                 break;
             case Action::kMOVE_down:
+                tracker.Checking_the_state(States_game::kKEY_COMMAND, logger);
                 joystick = Joystick::kDOWN;
                 break;
             case Action::kMOVE_right:
+                tracker.Checking_the_state(States_game::kKEY_COMMAND, logger);
                 joystick = Joystick::kRIGHT;
                 break;
+            case Action::kGO_quit:
+                tracker.Checking_the_state(States_game::kKEY_COMMAND, logger);
+                break;
             default:
+                tracker.Checking_the_state(States_game::kKEY, logger);
                 continue;
         }
         contr.Walking(joystick);
     } while (button != Action::kGO_quit);
 }
 
-int Game::The_end(Interlayer& layer, Tracker& tracker) {
+void Game::The_end(Interlayer& layer, Tracker& tracker) {
     Action button;
-    tracker.Checking_the_state(States_game::kNEW, logger);
     while (true){
+        tracker.Checking_the_state(States_game::kNEW, logger);
         button = layer.Get_action();
 
         if(button == Action::kSAY_yes){
+            tracker.Checking_the_state(States_game::kKEY_COMMAND, logger);
             Begin();
+            break;
         }else if(button == Action::kSAY_no){
+            tracker.Checking_the_state(States_game::kKEY_COMMAND, logger);
             tracker.Checking_the_state(States_game::kEND, logger);
-            return 0;
-        }else{
-            continue;
+            exit(0);
         }
+        tracker.Checking_the_state(States_game::kKEY, logger);
     }
 }
 

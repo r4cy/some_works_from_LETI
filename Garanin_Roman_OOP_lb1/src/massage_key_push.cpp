@@ -8,6 +8,9 @@ Massage_key_push::Massage_key_push(Interlayer &Value_layer): layer(Value_layer) 
     command[Action::kGO_quit] = "QUIT";
     command[Action::kSAY_yes] = "YES";
     command[Action::kSAY_no] = "NO";
+    command[Action::kONE] = "1";
+    command[Action::kTWO] = "2";
+    command[Action::kTHREE] = "3";
 }
 
 std::string Massage_key_push::Get_MASSAGE() {

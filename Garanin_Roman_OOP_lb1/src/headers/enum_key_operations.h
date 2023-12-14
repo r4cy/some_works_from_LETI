@@ -9,7 +9,10 @@ enum class Action{
     kGO_quit,
     kSAY_yes,
     kSAY_no,
-    kUN_KNOW
+    kUN_KNOW,
+    kONE,
+    kTWO,
+    kTHREE
 };
 
 #endif

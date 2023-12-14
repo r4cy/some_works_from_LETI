@@ -69,7 +69,3 @@ void Player::Set_X_Y(int valueX, int valueY){
     x = valueX;
     y = valueY;
 }
-
-void Player::PRINT_VALUES() const{
-    std::cout<<"Health = " << health << "\nPoints = " << points << "\nLevel = " << level << "\nX, Y = " << x << ", " << y << "\n\n";
-}

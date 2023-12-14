@@ -42,8 +42,6 @@ public:
     void Set_Y(int valueY);
 
     void Set_X_Y(int valueX, int valueY);
-
-    void PRINT_VALUES() const;
 };
 
 #endif

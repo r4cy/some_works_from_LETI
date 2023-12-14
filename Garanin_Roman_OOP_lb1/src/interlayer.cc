@@ -3,10 +3,12 @@
 Action Interlayer::Get_action() {
     char key = input.Input_function();
     Action action;
-    if (command.count(key) == 0)
+    if (command.count(key) == 0){
         action = Action::kUN_KNOW;
-    else
+    }
+    else{
         action = command[key];
+    }
     button = key;
     actions = action;
     return action;
@@ -39,6 +41,9 @@ Interlayer::Interlayer(Input_Interface& Value_input, const std::string& file_for
     action_assigned["QUIT"] = false;
     action_assigned["YES"] = false;
     action_assigned["NO"] = false;
+    action_assigned["ONE"] = false;
+    action_assigned["TWO"] = false;
+    action_assigned["THREE"] = false;
 
     while (file >> key >> action) {
         key = tolower(key);
@@ -79,6 +84,13 @@ Action Interlayer::Decoding_action(const std::string& action) {
         return Action::kSAY_yes;
     else if (action == "NO")
         return Action::kSAY_no;
+    else if (action == "ONE"){
+        return Action::kONE;
+    }else if (action == "TWO"){
+        return Action::kTWO;
+    }else if (action == "THREE"){
+        return Action::kTHREE;
+    }
     else
         return Action:: kUN_KNOW;
 }

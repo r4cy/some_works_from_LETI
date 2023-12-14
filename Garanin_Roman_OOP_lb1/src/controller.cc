@@ -38,7 +38,6 @@ void Controller::Walking(Joystick value){
             field.Get_Cell(temporary_x, temporary_y).Launch(*this);
         }
     }
-    person.PRINT_VALUES();
 }
 
 void Controller::change_health(int ValueC_Health){

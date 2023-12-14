@@ -14,6 +14,7 @@ public:
     void Print_playing_field(Player& player, Field& field) const override;
     void Print_player(Player& player) const override;
     void Print_start() const override;
+    void Print_logger() const override;
     void Print_choose_logger() const override;
     void Print_level() const override;
     void Print_win() const override;
