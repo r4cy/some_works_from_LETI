@@ -26,10 +26,8 @@ add_executable(Garanin_Roman_OOP_lb
         massage_log_new_game.cpp
         massage_key_push.cpp
         massage_key_not_work.cpp
-        headers/massage_key_not_work.h
-        headers/logger.h
         log_of_file.cpp
-        headers/log_of_file.h)
+        log_of_terminal.cpp)
 
 set_target_properties(Garanin_Roman_OOP_lb PROPERTIES
         OUTPUT_NAME main

@@ -4,6 +4,10 @@ void Terminal_render::Print_start() const {
     std::cout << "Hello and Welcome in my Game!" << std::endl;
 }
 
+void Terminal_render::Print_choose_logger() const {
+    std::cout << "DO YOU NEED A LOGGER? (Y - YES, N - NO): " << std::endl;
+}
+
 void Terminal_render::Print_level() const {
     std::cout << "Choose a level of map (1 or 2):" << std::endl;
 }
@@ -54,4 +58,8 @@ void Terminal_render::Print_new_game() const {
 
 void Terminal_render::Print_the_end() const {
     std::cout << "Thanks! Goodbye." << std::endl;
+}
+
+void Terminal_render::Clear() const {
+//    system("cls");
 }

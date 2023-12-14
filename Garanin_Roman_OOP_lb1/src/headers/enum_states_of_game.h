@@ -8,7 +8,11 @@ enum class States_game{
     kWIN,
     kLOOSE,
     kNEW,
-    kEND
+    kEND,
+    kGAME,
+    kKEY,
+    kKEY_COMMAND,
+    kCHOOSE_LOGGER
 };
 
 #endif

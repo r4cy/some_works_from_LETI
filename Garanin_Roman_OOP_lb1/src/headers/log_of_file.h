@@ -11,9 +11,9 @@ private:
     std::ofstream file;
 
 public:
-    Logger();
+    Log_of_file();
     void log(Massage* massage) override;
-    ~Logger();
+    ~Log_of_file();
 
 };
 
