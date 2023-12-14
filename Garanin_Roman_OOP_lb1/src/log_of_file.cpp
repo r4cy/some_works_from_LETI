@@ -1,4 +1,4 @@
-#include "log_of_file.h"
+#include "headers/log_of_file.h"
 
 Log_of_file::Log_of_file() {
     file.open("file_for_log");
