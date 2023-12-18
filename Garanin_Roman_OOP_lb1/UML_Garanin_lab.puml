@@ -60,6 +60,13 @@ class Log_of_file {
     + ~Log_of_file()
 }
 
+class Logger_of_terminal_and_File{
+    - log_of_terminal :Log_of_terminal
+    - log_of_file :Log_of_file
+    --
+    + log(message: Message*): void
+}
+
 Message <|.. Message_log_win
 Message <|.. Message_log_lose
 Message <|.. Message_log_new_game
@@ -67,9 +74,9 @@ Message <|.. Message_key_push
 Message <|.. Message_key_not_work
 Logger <|.. Log_of_terminal
 Logger <|.. Log_of_file
-Logger <|.. LoggerTerminalFile
+Logger <|.. Logger_of_terminal_and_File
 Message <.. Logger
-LoggerTerminalFile *-- LoggerTerminal
-LoggerTerminalFile *-- LoggerFile
+Logger_of_terminal_and_File *-- Log_of_terminal
+Logger_of_terminal_and_File *-- Log_of_file
 
 @enduml

@@ -6,7 +6,7 @@ Game::Game(Input_Interface& Value_input, Interface_render& Value_render): input(
 
 void Game::Begin() {
     Player player;
-    std::string filename = "control_keys";
+    std::string filename = "D:\\LETI_works\\OOP_works_c++\\Works_from_LETI\\Garanin_Roman_OOP_lb1\\src\\control_keys";
     Interlayer layer(input, filename);
     Tracker tracker(render, layer, player, field);
     tracker.Checking_the_state(States_game::kSTART, logger);

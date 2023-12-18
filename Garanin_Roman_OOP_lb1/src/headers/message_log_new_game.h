@@ -11,7 +11,6 @@ private:
 public:
     Message_log_new_game(Field& Value_field);
     std::string Get_MESSAGE() override;
-
 };
 
 
