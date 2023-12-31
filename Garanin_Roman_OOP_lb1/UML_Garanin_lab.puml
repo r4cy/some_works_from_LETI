@@ -1,0 +1,82 @@
+@startuml UML_Garanin_lab.puml
+
+hide circle
+skinparam classAttributeIconSize 0
+left to right direction
+
+abstract class Message {
+    + Get_MESSAGE(): std::string
+}
+
+class Message_log_win {
+    - player: Player&
+    --
+    + Message_log_win(Value_player: Player&)
+    + Get_MESSAGE(): std::string
+}
+
+class Message_log_lose {
+    - player_: Player&
+    --
+    + Message_log_lose(Value_player: Player&)
+    + Get_MESSAGE(): std::string
+}
+
+class Message_log_new_game {
+    - field: Field&
+    --
+    + Message_log_new_game(Value_field: Field&)
+    + Get_MESSAGE(): std::string
+}
+
+class Message_key_push {
+    - layer: Interlayer&
+    - command: std::unordered_map <Actions, std::string>
+    --
+    + Message_key_push(Value_layer: Interlayer&)
+    + Get_MESSAGE(): std::string
+}
+
+class Message_key_not_work {
+    - layer: Interlayer&
+    --
+    + Message_key_not_work(Value_layer: Interlayer&)
+    + Get_MESSAGE(): std::string
+}
+
+abstract class Logger {
+    + log(message: Message*): void
+}
+
+class Log_of_terminal {
+    + log(message: Message*): void
+}
+
+class Log_of_file {
+    - file: std::ofstream
+    --
+    + Log_of_file()
+    + log(message: Message*): void
+    + ~Log_of_file()
+}
+
+class Logger_of_terminal_and_File{
+    - log_of_terminal :Log_of_terminal
+    - log_of_file :Log_of_file
+    --
+    + log(message: Message*): void
+}
+
+Message <|.. Message_log_win
+Message <|.. Message_log_lose
+Message <|.. Message_log_new_game
+Message <|.. Message_key_push
+Message <|.. Message_key_not_work
+Logger <|.. Log_of_terminal
+Logger <|.. Log_of_file
+Logger <|.. Logger_of_terminal_and_File
+Message <.. Logger
+Logger_of_terminal_and_File *-- Log_of_terminal
+Logger_of_terminal_and_File *-- Log_of_file
+
+@enduml

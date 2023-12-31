@@ -1,1 +1,1 @@
-
+g++ main.cpp builder_field.cc cell.cc controller.cc first_aid_kit.cc game.cc input_from_keyboard.cc interlayer.cc mine.cc player.cc playing_field.cc teleport.cc tracker.cc terminal_render.cc log_of_file.cc log_of_terminal.cc message_key_push.cc message_key_not_work.cc message_log_lose.cc message_log_new_game.cc message_log_win.cc -o main.exe
